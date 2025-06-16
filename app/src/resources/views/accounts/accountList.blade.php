@@ -1,10 +1,10 @@
 <html lang="ja">
 <body>
-<h1>ユーザー一覧</h1>
+<h1>管理者アカウント一覧</h1>
 <table>
     <tr>
         <th>ID</th>
-        <th>ユーザー名</th>
+        <th>アカウント名</th>
     </tr>
     @foreach($accounts as $account)
         <tr>
@@ -13,7 +13,6 @@
         </tr>
     @endforeach
 </table>
-<a href="{{url('accounts/admin')}}">戻る</a>
+<a href="{{url('accounts/index')}}">戻る</a>
 </body>
 </html>
-

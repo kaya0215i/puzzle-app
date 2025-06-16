@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Barryvdh\Debugbar\Twig\Extension\Debug;
 use Illuminate\Http\Request;
@@ -10,36 +11,35 @@ class AccountController extends Controller
 {
     public function getUserInfo(Request $request)
     {
-        $data = [
-            [
-                'id' => 1,
-                'name' => 'テストさん',
-                'password' => '1234',
-                'score' => 12000
-            ],
-            [
-                'id' => 2,
-                'name' => 'jobi',
-                'password' => '5678',
-                'score' => 54000
-            ]
-        ];
+//        //テーブルの全てのレコードを取得
+//        $accounts = Account::All();
+//    　　//テーブルのレコード数を取得
+//    　　$count = Account::count();
+//    　　//idで検索,見つからなかったら404エラー
+//    　　$account = Account::findOrFail(1);
+//    　　//条件を指定して取得
+//    　　$account = Account::where(‘name’, ‘=‘, ‘jobi’)->get();
+//    　　//複数の条件を指定して取得
+//    　　$account = Account::where(‘name’, ‘=‘, ‘jobi’)
+//    　　　　　　　　->where(‘created_at’, ‘>=‘, ‘2024-06-08’)
+//    　　　　　　　　->get();
 
-        return $data;
+
+        return Account::All();
     }
 
-    public function showAdmin(Request $request)
+    public function index(Request $request)
     {
         if (!$request->session()->get('login')) {
             return redirect('/');
         }
 
 
-        return view('accounts/admin');
+        return view('accounts/index');
     }
 
     // アカウント一覧を表示する
-    public function showUsers(Request $request)
+    public function showAccounts(Request $request)
     {
         if (!$request->session()->get('login')) {
             return redirect('/');
@@ -47,42 +47,6 @@ class AccountController extends Controller
 
         $data = $this->getUserInfo($request);
 
-        return view('accounts/userList', ['accounts' => $data]);
-    }
-
-    public function showScores(Request $request)
-    {
-        if (!$request->session()->get('login')) {
-            return redirect('/');
-        }
-
-        $data = $this->getUserInfo($request);
-
-        return view('accounts/scoreList', ['scores' => $data]);
-    }
-
-    public function login(Request $request)
-    {
-        if ($request->session()->get('login')) {
-            return redirect('/accounts/admin');
-        }
-        //dd($request);
-        //Debugbar::error('エラー');
-        return view('accounts/login', ['error_id' => $request->error_id]);
-    }
-
-    public function doLogin(Request $request)
-    {
-        if ($request['userName'] === 'jobi' && $request['userPass'] === 'jobi') {
-            $request->session()->put('login', true);
-            return redirect('/accounts/admin');
-        }
-        return redirect('/1');
-    }
-
-    public function doLogout(Request $request)
-    {
-        $request->session()->forget('login');
-        return redirect('/');
+        return view('accounts/accountList', ['accounts' => $data]);
     }
 }

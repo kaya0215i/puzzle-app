@@ -1,17 +1,10 @@
 <html lang="ja">
 <body>
-<h1>{{$title}}</h1>
-<table>
-    <tr>
-        <th>名前</th>
-        <th>パスワード</th>
-    </tr>
-    @foreach($accounts as $account)
-        <tr>
-            <td>{{$account['name']}}</td>
-            <td>{{$account['password']}}</td>
-        </tr>
-    @endforeach
-</table>
+<h1>管理画面</h1>
+<a href="{{url('accounts/accountList')}}">管理者アカウント一覧</a><br>
+<a href="{{url('users/userList')}}">ユーザー一覧</a><br>
+<a href="{{url('users/itemList')}}">アイテム一覧</a><br>
+<a href="{{url('users/userItemList')}}">所持アイテム一覧</a><br>
+<a href="{{url('logout')}}">ログアウト</a>
 </body>
 </html>
