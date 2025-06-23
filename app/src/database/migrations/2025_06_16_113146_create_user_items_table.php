@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->integer('item_id');
             $table->integer('amount');
             $table->timestamps();
+            $table->unique(['user_id', 'item_id']);
         });
     }
 

@@ -22,14 +22,18 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    protected $model = User::class;
+
     public function definition(): array
     {
+        $scheduled = $this->faker->dateTimeBetween('+1day', '+1year');
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'name' => $this->faker->unique()->name(),
+            'level' => $this->faker->numberBetween(1, 100),
+            'exp' => $this->faker->randomNumber(5),
+            'created_at' => $scheduled->format('Y-m-d H:i:s'),
+            'updated_at' => $scheduled->modify('+1hour')->format('Y-m-d H:i:s')
         ];
     }
 

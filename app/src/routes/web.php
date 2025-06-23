@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\AuthMiddleware;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -11,12 +13,32 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 
-Route::get('accounts/index', [AccountController::class, 'index']);
-Route::get('accounts/accountList', [AccountController::class, 'showAccounts']);
+Route::prefix('accounts')->name('accounts.')->controller(AccountController::class)
+    ->middleware(AuthMiddleware::class)
+    ->group(function () {
+        Route::get('index', 'index')->name('index');
+        Route::get('accountList', 'showAccounts')->name('accountList');;
+    });
 
-Route::get('users/userList', [UserController::class, 'showUsers']);
-Route::get('users/itemList', [UserController::class, 'showItems']);
-Route::get('users/userItemList', [UserController::class, 'showUserItems']);
+Route::prefix('users')->name('users.')->controller(UserController::class)
+    ->middleware(AuthMiddleware::class)
+    ->group(function () {
+        Route::get('userList', 'showUsers')->name('userList');
+        Route::get('userItemList', 'showUserItems')->name('userItemList');
+        Route::get('userInfo/{id}/{from}/{page}', 'showUserInfo')->name('userInfo');
+    });
 
+Route::prefix('items')->name('items.')->controller(ItemController::class)
+    ->middleware(AuthMiddleware::class)
+    ->group(function () {
+        Route::get('index', 'showItems')->name('index');
+        Route::get('create', 'createItem')->name('create');
+        Route::post('store', 'storeItem')->name('store');
+        Route::post('confirm/{id}', 'confirmItem')->name('confirm');
+        Route::post('destroy/{id}', 'destroyItem')->name('destroy');
+        Route::match(['get', 'post'], 'edit/{id}', 'editItem')->name('edit');
+        Route::post('update/{id}', 'updateItem')->name('update');
+        Route::get('result', 'result')->name('result');
+    });
 
 Route::get('/{error_id?}', [AuthController::class, 'index']);

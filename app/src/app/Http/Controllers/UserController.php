@@ -12,40 +12,36 @@ class UserController extends Controller
 {
     function showUsers(Request $request)
     {
-        $this->isLogin($request);
-
-        $userData = User::All();
+        //$userData = User::All();
+        $userData = User::paginate(10);
 
         return view('users/userList', ['users' => $userData]);
     }
 
     function showUserItems(Request $request)
     {
-        $this->isLogin($request);
-
         $data = UserItems::select('user_items.id as id', 'users.name as userName', 'items.name as itemName',
-            'user_items.amount as amount')
+            'user_items.amount as amount', 'users.id as userId')
             ->leftJoin('users', 'users.id', '=', 'user_items.user_id')
             ->leftJoin('items', 'items.id', '=', 'user_items.item_id')
-            ->get();
+            ->paginate(10);
 
         return view('users/userItemList', ['data' => $data]);
     }
 
-    function showItems(Request $request)
+    function showUserInfo(request $request)
     {
-        $this->isLogin($request);
+        $user = User::select('id', 'name', 'level', 'exp', 'created_at', 'updated_at')
+            ->where('id', '=', $request->id)
+            ->first();
 
-        $itemData = Item::All();
+        $item = UserItems::select('items.name as itemName', 'user_items.amount as amount')
+            ->leftJoin('users', 'users.id', '=', 'user_items.user_id')
+            ->leftJoin('items', 'items.id', '=', 'user_items.item_id')
+            ->where('users.id', '=', $request->id)
+            ->paginate(10);
 
-        return view('users/itemList', ['items' => $itemData]);
-    }
-
-    function isLogin(Request $request)
-    {
-        if (!$request->session()->get('login')) {
-            return redirect('/');
-        }
-        return 0;
+        return view('users/userInfo',
+            ['user' => $user, 'item' => $item, 'from' => $request->from, 'page' => $request->page]);
     }
 }
