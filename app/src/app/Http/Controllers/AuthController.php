@@ -22,14 +22,14 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validated = $request->validate([
-            'accountName' => ['required', 'min:4', 'max:20'],
-            'accountPass' => ['required'],
+            'account_name' => ['required', 'min:4', 'max:20'],
+            'account_pass' => ['required'],
         ]);
 
-        $accounts = Account::where('name', '=', $request['accountName'])->get();
+        $accounts = Account::where('name', '=', $request['account_name'])->get();
 
         foreach ($accounts as $account) {
-            if (Hash::check($validated['accountPass'], $account->password)) {
+            if (Hash::check($validated['account_pass'], $account->password)) {
                 $request->session()->put('login', true);
                 return redirect('/accounts/index');
             }

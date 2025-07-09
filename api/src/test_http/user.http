@@ -1,0 +1,12 @@
+### ユーザー情報取得
+GET http://localhost:8000/api/users/1
+
+### ユーザー一覧取得
+GET http://localhost:8000/api/users/index
+Accept: application/json
+
+### ユーザー所持アイテム取得
+GET http://localhost:8000/api/items/1
+
+### フィールドデータ取得
+GET http://localhost:8000/api/fields/3

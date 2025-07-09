@@ -1,27 +1,31 @@
 @extends('layouts.app')
 @section('title', '所持アイテム一覧')
 @section('body')
-    <h1>所持アイテム一覧</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>ユーザー名</th>
-            <th>アイテム名</th>
-            <th>所持数</th>
-        </tr>
-        @foreach($data as $column)
+    <div class="d-flex align-items-center flex-column">
+        <h1 class="m-2" style="width: 70%">所持アイテム一覧</h1>
+        <table class="table table-striped table-bordered border-dark" style="width: 70%">
             <tr>
-                <td>{{$column['id']}}</td>
-                <td>
-                    <a href="{{url('users/userInfo/')}}/{{$column['userId']}}/userItemList/{{$data->currentPage()}}">{{$column['userName']}}
-                </td>
-                <td>{{$column['itemName']}}</td>
-                <td>{{$column['amount']}}</td>
+                <th class="text-center fs-5" style="width: 8%">ID</th>
+                <th class="text-center fs-5" style="width: 40%">ユーザー名</th>
+                <th class="text-center fs-5">アイテム名</th>
+                <th class="text-center fs-5">所持数</th>
             </tr>
-        @endforeach
-    </table>
+            @foreach($data as $column)
+                <tr>
+                    <td class="text-center">{{$column['id']}}</td>
+                    <td>
+                        <a href="{{url('users/userInfo/')}}/{{$column['userId']}}/userItemList/{{$data->currentPage()}}">{{$column['userName']}}
+                    </td>
+                    <td>{{$column['itemName']}}</td>
+                    <td>{{$column['amount']}}</td>
+                </tr>
+            @endforeach
+        </table>
+    </div>
     <br>
     {{$data->links('vendor.pagination.bootstrap-5')}}
-    <a href="{{url('accounts/index')}}">戻る</a>
+    <div class="d-flex align-items-center flex-column">
+        <a href="{{url('accounts/index')}}" class="btn btn-primary">戻る</a>
+    </div>
 @endsection
 

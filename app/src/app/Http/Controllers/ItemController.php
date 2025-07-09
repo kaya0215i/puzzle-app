@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    function showItems(Request $request)
+    function index(Request $request)
     {
         //$itemData = Item::All();
-        $itemData = Item::simplePaginate(10);
+        $itemData = Item::paginate(10);
 
         return view('items/itemList', ['items' => $itemData]);
     }
@@ -37,10 +37,10 @@ class ItemController extends Controller
 
 
         Item::create([
-            'name' => $request->name,
+            'name' => $validated['name'],
             'class' => $itemClass,
-            'effect_value' => $request->effect_value,
-            'text' => $request->text,
+            'effect_value' => $validated['effect_value'],
+            'text' => $validated['text'],
         ]);
 
         $title = 'アイテム作成';
@@ -100,6 +100,10 @@ class ItemController extends Controller
             $itemClass = '装備品';
         }
 
+        $oldItem = Item::select('name', 'class', 'effect_value', 'text')
+            ->where('id', '=', $request->id)
+            ->first();
+
         $item = Item::findOrFail($request->id);
         $item->name = $validated['name'];
         $item->class = $itemClass;
@@ -108,9 +112,10 @@ class ItemController extends Controller
         $item->save();
 
         $title = 'アイテム更新';
-        $text = '[' . $request->name . '] ' . 'の情報を更新しました。';
+        $text = '情報を更新しました。';
 
-        return redirect('items/result')->with('title', $title)->with('text', $text);
+        return redirect('items/result')->with('title', $title)->with('text', $text)->with('oldItem',
+            $oldItem)->with('newItem', $item);
     }
 
     function result(Request $request)
@@ -118,6 +123,9 @@ class ItemController extends Controller
         $title = $request->session()->get('title');
         $text = $request->session()->get('text');
         $id = $request->session()->get('id');
-        return view('items/result', ['title' => $title, 'text' => $text, 'id' => $id]);
+        $oldItem = $request->session()->get('oldItem');
+        $newItem = $request->session()->get('newItem');
+        return view('items/result',
+            ['title' => $title, 'text' => $text, 'id' => $id, 'oldItem' => $oldItem, 'newItem' => $newItem]);
     }
 }

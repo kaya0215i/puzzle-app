@@ -28,7 +28,7 @@
             </ul>
         </div>
 
-        <div class="d-flex flex-column flex-sm-fill d-sm-flex align-items-sm-start justify-content-center">
+        <div class="d-flex flex-column flex-sm-fill d-sm-flex align-items-sm-center justify-content-center">
             <div>
                 <p class="small text-muted">
                     <span class="fw-semibold">{{ $paginator->firstItem() }}</span>

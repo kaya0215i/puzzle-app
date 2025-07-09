@@ -21,7 +21,7 @@ class UserItemsFactory extends Factory
     {
         $scheduled = $this->faker->dateTimeBetween('+1day', '+1year');
         return [
-            'user_id' => $this->faker->unique()->numberBetween(1, 100),
+            'user_id' => $this->faker->unique()->numberBetween(2, 100),
             'item_id' => $this->faker->numberBetween(1, 4),
             'amount' => $this->faker->numberBetween(1, 999),
             'created_at' => $scheduled->format('Y-m-d H:i:s'),
