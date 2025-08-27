@@ -10,6 +10,15 @@ Route::get('/users/index',
     [UserController::class, 'index'])
     ->name('users.index');
 
+Route::post('/users/store',
+    [UserController::class, 'store'])
+    ->name('users.store');
+
+Route::post('/users/update',
+    [UserController::class, 'update'])
+    ->middleware('auth:sanctum')
+    ->name('users.update');
+
 Route::get('/users/{user_id}',
     [UserController::class, 'show'])
     ->name('users.show');

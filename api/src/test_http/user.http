@@ -2,8 +2,27 @@
 GET http://localhost:8000/api/users/1
 
 ### ユーザー一覧取得
-GET http://localhost:8000/api/users/index
+GET http://localhost:8000/api/users/index?name=kekek
 Accept: application/json
+
+### ユーザー登録
+POST http://localhost:8000/api/users/store
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "kekek"
+}
+
+### ユーザー更新
+POST http://localhost:8000/api/users/update
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|ycAmrbmCvTCfEs9kcMlgBKEdJcnQKzJ4b1UsNwJG23aff1ce
+
+{
+    "name": "kaya"
+}
 
 ### ユーザー所持アイテム取得
 GET http://localhost:8000/api/items/1
