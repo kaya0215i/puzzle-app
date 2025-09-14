@@ -17,23 +17,43 @@
                 <input id="name" type="text" name="name" class="mb-3">
             </label>
             <br>
-            <label for="consumables">
-                <input id="consumables" type="radio" name="class" value="consumables" checked class="mb-3">
-                消耗品
+            <label for="weapon">
+                <input id="weapon" type="radio" name="is_weapon" value="weapon" checked class="mb-3">
+                武器
             </label>
-            <label for="equipment">
-                <input id="equipment" type="radio" name="class" value="equipment" class="mb-3">
-                装備品
+            <label for="item">
+                <input id="item" type="radio" name="is_weapon" value="item" class="mb-3">
+                アイテム
             </label>
             <br>
-            <label for="effect_value">
+            <label for="amount">
                 <p class="m-0 fw-bold">効果値</p>
-                <input id="effect_value" type="number" name="effect_value" class="mb-3">
+                <input id="amount" type="number" name="amount" class="mb-3">
+            </label>
+            <br>
+            <label for="energy_up">
+                <p class="m-0 fw-bold">エネルギー回復</p>
+                <input id="energy_up" type="number" name="energy_up" class="mb-3">
+            </label>
+            <br>
+            <label for="energy_cost">
+                <p class="m-0 fw-bold">エネルギーコスト</p>
+                <input id="energy_cost" type="number" name="energy_cost" class="mb-3">
+            </label>
+            <br>
+            <label for="cool_time">
+                <p class="m-0 fw-bold">クールタイム</p>
+                <input id="cool_time" type="number" name="cool_time" class="mb-3">
             </label>
             <br>
             <label for="text">
                 <p class="m-0 fw-bold">アイテム説明</p>
                 <input id="text" type="text" name="text" class="mb-3">
+            </label>
+            <br>
+            <label for="price">
+                <p class="m-0 fw-bold">値段</p>
+                <input id="price" type="number" name="price" class="mb-3">
             </label>
             <br>
             <div class="d-flex align-items-center flex-column">

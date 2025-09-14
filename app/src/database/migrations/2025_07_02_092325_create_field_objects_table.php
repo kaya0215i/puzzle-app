@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->integer('field_id');
             $table->integer('pos_X');
             $table->integer('pos_Y');
-            $table->integer('item_object_id');
+            $table->integer('item_id');
             $table->timestamps();
             $table->unique(['field_id', 'pos_X', 'pos_Y']);
         });

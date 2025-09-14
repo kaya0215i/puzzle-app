@@ -6,7 +6,6 @@
         <a href="{{url('accounts/accountList')}}" class="btn btn-primary">管理者アカウント一覧</a><br>
         <a href="{{url('users/index')}}" class="btn btn-primary">ユーザー一覧</a><br>
         <a href="{{url('items/index')}}" class="btn btn-primary">アイテム一覧</a><br>
-        <a href="{{url('userItems/index')}}" class="btn btn-primary">所持アイテム一覧</a><br>
         <a href="{{url('fields/index')}}" class="btn btn-primary">フィールド一覧</a><br>
         <br>
         <a href="{{url('logout')}}" class="btn btn-danger">ログアウト</a>

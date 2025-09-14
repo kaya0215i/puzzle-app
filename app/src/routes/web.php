@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FieldController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserItemsController;
 use App\Http\Middleware\AuthMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -40,12 +39,6 @@ Route::prefix('items')->name('items.')->controller(ItemController::class)
         Route::match(['get', 'post'], 'edit/{id}', 'editItem')->name('edit');
         Route::post('update/{id}', 'updateItem')->name('update');
         Route::get('result', 'result')->name('result');
-    });
-
-Route::prefix('userItems')->name('userItems.')->controller(UserItemsController::class)
-    ->middleware(AuthMiddleware::class)
-    ->group(function () {
-        Route::get('index', 'index')->name('index');
     });
 
 Route::prefix('fields')->name('fields.')->controller(FieldController::class)

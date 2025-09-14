@@ -13,9 +13,13 @@ return new class extends Migration {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('class');
-            $table->integer('effect_value');
+            $table->boolean('is_weapon');
+            $table->float('amount');
+            $table->float('energy_up');
+            $table->float('energy_cost');
+            $table->float('cool_time');
             $table->string('text');
+            $table->integer('price');
             $table->timestamps();
         });
     }

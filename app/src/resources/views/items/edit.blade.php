@@ -16,28 +16,52 @@
                 <p class="m-0 fw-bold">アイテム名</p>
                 <input id="name" type="text" name="name" placeholder="{{$data['name']}}" class="mb-3">
             </label><br>
-            <label for="consumables">
-                <input id="consumables" type="radio" name="class" value="consumables"
-                       @if($data['class'] === '消耗品' ) checked
+            <label for="weapon">
+                <input id="weapon" type="radio" name="is_weapon" value="weapon"
+                       @if($data['is_weapon'] === 1 ) checked
                        @endif class="mb-3">
-                消耗品
+                武器
             </label>
-            <label for="equipment">
-                <input id="equipment" type="radio" name="class" value="equipment"
-                       @if($data['class'] === '装備品' ) checked
+            <label for="item">
+                <input id="item" type="radio" name="is_weapon" value="item"
+                       @if($data['is_weapon'] === 0 ) checked
                        @endif class="mb-3">
-                装備品
+                アイテム
             </label>
             <br>
-            <label for="effect_value">
+            <label for="amount">
                 <p class="m-0 fw-bold">効果値</p>
-                <input id="effect_value" type="number" name="effect_value" placeholder="{{$data['effect_value']}}"
+                <input id="amount" type="number" name="amount" placeholder="{{$data['amount']}}"
+                       class="mb-3">
+            </label>
+            <br>
+            <label for="energy_up">
+                <p class="m-0 fw-bold">エネルギー回復</p>
+                <input id="energy_up" type="number" name="energy_up" placeholder="{{$data['energy_up']}}"
+                       class="mb-3">
+            </label>
+            <br>
+            <label for="energy_cost">
+                <p class="m-0 fw-bold">エネルギーコスト</p>
+                <input id="energy_cost" type="number" name="energy_cost" placeholder="{{$data['energy_cost']}}"
+                       class="mb-3">
+            </label>
+            <br>
+            <label for="cool_time">
+                <p class="m-0 fw-bold">クールタイム</p>
+                <input id="cool_time" type="number" name="cool_time" placeholder="{{$data['cool_time']}}"
                        class="mb-3">
             </label>
             <br>
             <label for="text">
                 <p class="m-0 fw-bold">アイテム説明</p>
                 <input id="text" type="text" name="text" placeholder="{{$data['text']}}" class="mb-3">
+            </label>
+            <br>
+            <label for="price">
+                <p class="m-0 fw-bold">値段</p>
+                <input id="price" type="number" name="price" placeholder="{{$data['price']}}"
+                       class="mb-3">
             </label>
             <br>
             <div class="d-flex align-items-center flex-column">

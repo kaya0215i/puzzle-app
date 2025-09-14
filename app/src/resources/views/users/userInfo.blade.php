@@ -29,22 +29,8 @@
                 <td>{{$user->updated_at}}</td>
             </tr>
         </table>
-        <br>
-        <table class="table table-striped table-bordered border-dark" style="width: 70%">
-            <tr>
-                <th class="text-center fs-5">アイテム名</th>
-                <th class="text-center fs-5" style="width: 10%">所持数</th>
-            </tr>
-            @foreach($item as $column)
-                <tr>
-                    <td>{{$column['itemName']}}</td>
-                    <td class="text-end">{{$column['amount']}}</td>
-                </tr>
-            @endforeach
-        </table>
     </div>
     <br>
-    {{$item->links('vendor.pagination.bootstrap-5')}}
     <div class="d-flex align-items-center flex-column">
         @if($from === 'userList')
             <a href="{{url('users/index?page=')}}{{$page}}" class="btn btn-primary">戻る</a>

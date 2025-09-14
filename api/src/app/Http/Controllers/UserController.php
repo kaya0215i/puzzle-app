@@ -12,18 +12,9 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string'],
-        ]);
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
-        }
-
-        $str = '%' . $request->name . '%';
-
-        $user = User::where('name', 'like', $str)->get();
+        $user = User::findOrFail($request->user()->id);
         return response()->json(
-            UserResource::collection($user)
+            UserResource::make($user)
         );
     }
 
@@ -45,11 +36,6 @@ class UserController extends Controller
             'name' => $validated['name'],
             'level' => 0,
             'exp' => 0,
-        ]);
-
-        UserDetail::create([
-            'user_id' => $user->id,
-            'money' => 0,
         ]);
 
         // APIトークンを発行する

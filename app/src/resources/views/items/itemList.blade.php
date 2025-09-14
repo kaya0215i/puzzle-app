@@ -7,18 +7,33 @@
             <tr>
                 <th class="text-center fs-5" style="width: 5%">ID</th>
                 <th class="text-center fs-5">名前</th>
-                <th class="text-center fs-5">種別</th>
+                <th class="text-center fs-5">種類</th>
                 <th class="text-center fs-5">効果値</th>
+                <th class="text-center fs-5">エネルギー回数</th>
+                <th class="text-center fs-5">エネルギーコスト</th>
+                <th class="text-center fs-5">クールタイム</th>
                 <th class="text-center fs-5">説明</th>
+                <th class="text-center fs-5">値段</th>
                 <th class="text-center fs-5" style="width: 8%">操作</th>
             </tr>
             @foreach($items as $item)
                 <tr>
                     <td class="text-center">{{$item['id']}}</td>
                     <td>{{$item['name']}}</td>
-                    <td>{{$item['class']}}</td>
-                    <td>{{$item['effect_value']}}</td>
+                    <td>
+                        @if ($item['is_weapon'] === 1)
+                            武器
+
+                        @elseif ($item['is_weapon'] === 0)
+                            アイテム
+                        @endif
+                    </td>
+                    <td>{{$item['amount']}}</td>
+                    <td>{{$item['energy_up']}}</td>
+                    <td>{{$item['energy_cost']}}</td>
+                    <td>{{$item['cool_time']}}</td>
                     <td>{{$item['text']}}</td>
+                    <td>{{$item['price']}}</td>
                     <td class="d-flex justify-content-sm-between align-items-center">
                         <form method="post" action="{{url('items/confirm')}}/{{$item['id']}}">
                             @csrf

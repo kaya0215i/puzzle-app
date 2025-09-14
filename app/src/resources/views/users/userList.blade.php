@@ -9,7 +9,6 @@
                 <th class="text-center fs-5" style="width: 40%">ユーザー名</th>
                 <th class="text-center fs-5">レベル</th>
                 <th class="text-center fs-5">経験値</th>
-                <th class="text-center fs-5">お金</th>
             </tr>
             @foreach($users as $user)
                 <tr>
@@ -19,11 +18,6 @@
                     </td>
                     <td>{{$user['level']}}</td>
                     <td>{{$user['exp']}}</td>
-                    @if(isset($user->detail->money))
-                        <td>{{$user->detail->money}}</td>
-                    @else
-                        <td></td>
-                    @endif
                 </tr>
             @endforeach
         </table>

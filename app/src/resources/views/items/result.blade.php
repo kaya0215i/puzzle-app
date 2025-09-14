@@ -19,18 +19,50 @@
                 </tr>
                 <tr>
                     <th class="text-center fs-5">種別</th>
-                    <td>{{$oldItem->class}}</td>
-                    <td>{{$newItem->class}}</td>
+                    <td>
+                        @if($oldItem->is_weapon === 1)
+                            武器
+                        @elseif($oldItem->is_weapon === 0)
+                            アイテム
+                        @endif
+                    </td>
+                    <td>
+                        @if($newItem->is_weapon === true)
+                            武器
+                        @elseif($newItem->is_weapon === false)
+                            アイテム
+                        @endif
+                    </td>
                 </tr>
                 <tr>
                     <th class="text-center fs-5">効果値</th>
-                    <td>{{$oldItem->effect_value}}</td>
-                    <td>{{$newItem->effect_value}}</td>
+                    <td>{{$oldItem->amount}}</td>
+                    <td>{{$newItem->amount}}</td>
+                </tr>
+                <tr>
+                    <th class="text-center fs-5">エネルギー回復</th>
+                    <td>{{$oldItem->energy_up}}</td>
+                    <td>{{$newItem->energy_up}}</td>
+                </tr>
+                <tr>
+                    <th class="text-center fs-5">エネルギーコスト</th>
+                    <td>{{$oldItem->energy_cost}}</td>
+                    <td>{{$newItem->energy_cost}}</td>
+                </tr>
+                <tr>
+                    <th class="text-center fs-5">クールタイム</th>
+                    <td>{{$oldItem->cool_time}}</td>
+                    <td>{{$newItem->cool_time}}</td>
                 </tr>
                 <tr>
                     <th class="text-center fs-5">アイテム説明</th>
                     <td>{{$oldItem->text}}</td>
                     <td>{{$newItem->text}}</td>
+                </tr>
+                <tr>
+                    <th class="text-center fs-5">値段</th>
+                    <td>{{$oldItem->price}}</td>
+                    <td>{{$newItem->price}}</td>
                 </tr>
             </table>
         @endif

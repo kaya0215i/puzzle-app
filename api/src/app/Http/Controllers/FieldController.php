@@ -13,15 +13,8 @@ class FieldController extends Controller
     {
         $field = Field::whereNot('id', '=', $request->user_id)->get();
         $field = $field->random();
-
-        $fieldInfo[] = $field->id;
-        $fieldInfo[] = $field->users->name;
-
-        foreach ($field->objects as $object) {
-            $fieldInfo[] = $object->pivot->pos_X;
-            $fieldInfo[] = $object->pivot->pos_Y;
-            $fieldInfo[] = $object->name;
-        }
+        
+        $fieldInfo[] = $field->json;
 
         return response()->json(
             $fieldInfo

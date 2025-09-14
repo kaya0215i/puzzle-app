@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * Userモデル
+ */
 class User extends Authenticatable
 {
     use HasFactory;
@@ -15,16 +18,4 @@ class User extends Authenticatable
     protected $guarded = [
         'id',
     ];
-
-    public function detail()
-    {
-        return $this->hasOne(UserDetail::class);
-    }
-
-    public function items()
-    {
-        return $this->belongsToMany(
-            Item::class, 'user_items', 'user_id', 'item_id')
-            ->withPivot('amount', 'id');
-    }
 }

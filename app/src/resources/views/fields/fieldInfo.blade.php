@@ -19,6 +19,12 @@
         </table>
         <table class="table table-striped table-bordered border-dark" style="width: 70%">
             <tr>
+                <th class="text-center fs-5" style="width: 50%">json</th>
+                <td>{{$field->json}}</td>
+            </tr>
+        </table>
+        <table class="table table-striped table-bordered border-dark" style="width: 70%">
+            <tr>
                 <th class="text-center fs-5" style="width: 25%">X座標</th>
                 <th class="text-center fs-5" style="width: 25%">Y座標</th>
                 <th class="text-center fs-5">オブジェクトの種類</th>

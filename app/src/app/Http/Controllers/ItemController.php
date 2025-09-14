@@ -9,7 +9,6 @@ class ItemController extends Controller
 {
     function index(Request $request)
     {
-        //$itemData = Item::All();
         $itemData = Item::paginate(10);
 
         return view('items/itemList', ['items' => $itemData]);
@@ -24,23 +23,31 @@ class ItemController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'min:3', 'max:20'],
-            'effect_value' => ['required'],
-            'text' => ['required', 'min:3', 'max:50'],
+            'amount' => ['required'],
+            'energy_up' => ['required'],
+            'energy_cost' => ['required'],
+            'cool_time' => ['required'],
+            'text' => ['required', 'min:3', 'max:150'],
+            'price' => ['required'],
         ]);
 
-        $itemClass = '';
-        if ($request->class === 'consumables') {
-            $itemClass = '消耗品';
-        } elseif ($request->class === 'equipment') {
-            $itemClass = '装備品';
+        $isWeapon = '';
+        if ($request->is_weapon === 'weapon') {
+            $isWeapon = true;
+        } elseif ($request->is_weapon === 'item') {
+            $isWeapon = false;
         }
 
 
         Item::create([
             'name' => $validated['name'],
-            'class' => $itemClass,
-            'effect_value' => $validated['effect_value'],
+            'is_weapon' => $isWeapon,
+            'amount' => $validated['amount'],
+            'energy_up' => $validated['energy_up'],
+            'energy_cost' => $validated['energy_cost'],
+            'cool_time' => $validated['cool_time'],
             'text' => $validated['text'],
+            'price' => $validated['price'],
         ]);
 
         $title = 'アイテム作成';
@@ -78,7 +85,8 @@ class ItemController extends Controller
 
     function editItem(Request $request)
     {
-        $data = Item::select('id', 'name', 'class', 'effect_value', 'text')
+        $data = Item::select('id', 'name', 'is_weapon', 'amount', 'energy_up', 'energy_cost', 'cool_time', 'text',
+            'price')
             ->where('id', '=', $request->id)
             ->first();
 
@@ -89,26 +97,35 @@ class ItemController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'min:3', 'max:20'],
-            'effect_value' => ['required'],
-            'text' => ['required', 'min:3', 'max:50'],
+            'amount' => ['required'],
+            'energy_up' => ['required'],
+            'energy_cost' => ['required'],
+            'cool_time' => ['required'],
+            'text' => ['required', 'min:3', 'max:150'],
+            'price' => ['required'],
         ]);
 
-        $itemClass = '';
-        if ($request->class === 'consumables') {
-            $itemClass = '消耗品';
-        } elseif ($request->class === 'equipment') {
-            $itemClass = '装備品';
+        $isWeapon = '';
+        if ($request->is_weapon === 'weapon') {
+            $isWeapon = true;
+        } elseif ($request->is_weapon === 'item') {
+            $isWeapon = false;
         }
 
-        $oldItem = Item::select('name', 'class', 'effect_value', 'text')
+        $oldItem = Item::select('id', 'name', 'is_weapon', 'amount', 'energy_up', 'energy_cost', 'cool_time', 'text',
+            'price')
             ->where('id', '=', $request->id)
             ->first();
 
         $item = Item::findOrFail($request->id);
         $item->name = $validated['name'];
-        $item->class = $itemClass;
-        $item->effect_value = $validated['effect_value'];
+        $item->is_weapon = $isWeapon;
+        $item->amount = $validated['amount'];
+        $item->energy_up = $validated['energy_up'];
+        $item->energy_cost = $validated['energy_cost'];
+        $item->cool_time = $validated['cool_time'];
         $item->text = $validated['text'];
+        $item->price = $validated['price'];
         $item->save();
 
         $title = 'アイテム更新';
