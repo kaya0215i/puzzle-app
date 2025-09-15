@@ -24,6 +24,12 @@ Route::get('/users/{user_id}',
     [UserController::class, 'show'])
     ->name('users.show');
 
-Route::get('/fields/{user_id}',
-    [FieldController::class, 'showRandomFieldInfo'])
+Route::post('/fields/store',
+    [FieldController::class, 'store'])
+    ->middleware('auth:sanctum')
+    ->name('fields.store');
+
+Route::get('/fields/{round}',
+    [FieldController::class, 'getFieldInfo'])
+    ->middleware('auth:sanctum')
     ->name('fields.showFieldInfo');

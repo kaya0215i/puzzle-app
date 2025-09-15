@@ -16,24 +16,24 @@
                 <th class="text-center fs-5">ユーザー名</th>
                 <td>{{$field->users->name}}</td>
             </tr>
-        </table>
-        <table class="table table-striped table-bordered border-dark" style="width: 70%">
             <tr>
-                <th class="text-center fs-5" style="width: 50%">json</th>
-                <td>{{$field->json}}</td>
+                <th class="text-center fs-5">ラウンド</th>
+                <td>{{$field->round}}</td>
+            </tr>
+            <tr>
+                <th class="text-center fs-5">キャラクター</th>
+                <td>{{$field->character_type}}</td>
             </tr>
         </table>
         <table class="table table-striped table-bordered border-dark" style="width: 70%">
             <tr>
-                <th class="text-center fs-5" style="width: 25%">X座標</th>
-                <th class="text-center fs-5" style="width: 25%">Y座標</th>
+                <th class="text-center fs-5" style="width: 25%">座標</th>
                 <th class="text-center fs-5">オブジェクトの種類</th>
             </tr>
-            @foreach($field->objects as $object)
+            @foreach($field->field_objects as $field_objects)
                 <tr>
-                    <td>{{$object->pivot->pos_X}}</td>
-                    <td>{{$object->pivot->pos_Y}}</td>
-                    <td>{{$object->name}}</td>
+                    <td>{{$field_objects->pivot->index}}</td>
+                    <td>{{$field_objects->name}}</td>
                 </tr>
             @endforeach
         </table>

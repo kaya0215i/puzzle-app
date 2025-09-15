@@ -13,11 +13,15 @@ return new class extends Migration {
         Schema::create('field_objects', function (Blueprint $table) {
             $table->id();
             $table->integer('field_id');
-            $table->integer('pos_X');
-            $table->integer('pos_Y');
+            $table->integer('index');
             $table->integer('item_id');
+            $table->integer('piece_id');
+            $table->float('angle_x');
+            $table->float('angle_y');
+            $table->float('angle_z');
+            $table->float('angle_w');
             $table->timestamps();
-            $table->unique(['field_id', 'pos_X', 'pos_Y']);
+            $table->unique(['field_id', 'index']);
         });
     }
 

@@ -13,11 +13,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run(): void
     {
-//        User::create([
-//            'name' => 'kaya',
-//            'level' => 9999,
-//            'exp' => 9999,
-//        ]);
+        User::create([
+            'name' => 'kaya',
+            'level' => 9999,
+            'exp' => 9999,
+        ]);
 //        User::create([
 //            'name' => 'kei',
 //            'level' => 19,
@@ -28,6 +28,6 @@ class UsersTableSeeder extends Seeder
 //            'level' => 20,
 //            'exp' => 61,
 //        ]);
-        User::factory(100)->create();
+//        User::factory(99)->create();
     }
 }

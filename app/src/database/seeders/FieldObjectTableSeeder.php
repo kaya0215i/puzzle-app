@@ -15,40 +15,35 @@ class FieldObjectTableSeeder extends Seeder
     {
         FieldObject::create([
             'field_id' => 1,
-            'pos_X' => 0,
-            'pos_Y' => 0,
+            'index' => 17,
             'item_id' => 1,
-        ]);
-        FieldObject::create([
-            'field_id' => 1,
-            'pos_X' => 1,
-            'pos_Y' => 0,
-            'item_id' => 2,
-        ]);
-        FieldObject::create([
-            'field_id' => 1,
-            'pos_X' => 0,
-            'pos_Y' => 1,
-            'item_id' => 3,
+            'piece_id' => 1,
+            'angle_x' => 0.0,
+            'angle_y' => 0.0,
+            'angle_z' => 0.0,
+            'angle_w' => 1.0,
         ]);
 
         FieldObject::create([
-            'field_id' => 2,
-            'pos_X' => 1,
-            'pos_Y' => 0,
+            'field_id' => 1,
+            'index' => 18,
+            'item_id' => 15,
+            'piece_id' => 3,
+            'angle_x' => 0.0,
+            'angle_y' => 0.0,
+            'angle_z' => 0.0,
+            'angle_w' => 1.0,
+        ]);
+
+        FieldObject::create([
+            'field_id' => 1,
+            'index' => 24,
             'item_id' => 1,
-        ]);
-        FieldObject::create([
-            'field_id' => 2,
-            'pos_X' => 2,
-            'pos_Y' => 0,
-            'item_id' => 2,
-        ]);
-        FieldObject::create([
-            'field_id' => 2,
-            'pos_X' => 3,
-            'pos_Y' => 1,
-            'item_id' => 3,
+            'piece_id' => 3,
+            'angle_x' => 0.0,
+            'angle_y' => 0.0,
+            'angle_z' => 0.0,
+            'angle_w' => 1.0,
         ]);
     }
 }

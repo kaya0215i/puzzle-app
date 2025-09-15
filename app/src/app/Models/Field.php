@@ -13,11 +13,11 @@ class Field extends Model
         'id',
     ];
 
-    public function objects()
+    public function field_objects()
     {
         return $this->belongsToMany(
             Item::class, 'field_objects', 'field_id', 'item_id'
-        )->withPivot('pos_X', 'pos_Y');
+        )->withPivot('index');
         //return $this->hasMany(FieldObject::class);
     }
 

@@ -12,9 +12,4 @@ class User extends Model
     protected $guarded = [
         'id',
     ];
-
-    public function detail()
-    {
-        return $this->hasOne(UserDetail::class);
-    }
 }

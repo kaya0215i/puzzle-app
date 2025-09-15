@@ -1,10 +1,11 @@
 ### ユーザー情報取得
 GET http://localhost:8000/api/users/1
+Content-Type: application/json
 
 ### ユーザー情報取得
 GET http://localhost:8000/api/users/index
 Accept: application/json
-Authorization: Bearer 1|lORWqXz8ZsLd3d1yidd4uDoQEpaPivXFoqwnwFPUc0cc534a
+Authorization: Bearer 1|reGN6SFwxWCDzuXVsiSL9oPYV3nIha8yEoC7pcc057a60cda
 
 ### ユーザー登録
 POST http://localhost:8000/api/users/store
@@ -12,18 +13,66 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "name": "kaya"
+    "name": "kayaa"
 }
 
 ### ユーザー更新
 POST http://localhost:8000/api/users/update
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer 1|ycAmrbmCvTCfEs9kcMlgBKEdJcnQKzJ4b1UsNwJG23aff1ce
+Authorization: Bearer 1|reGN6SFwxWCDzuXVsiSL9oPYV3nIha8yEoC7pcc057a60cda
 
 {
-    "name": "kaya"
+    "name": "kayaa"
 }
 
 ### フィールドデータ取得
-GET http://localhost:8000/api/fields/2
+GET http://localhost:8000/api/fields/1
+Content-Type: application/json
+Authorization: Bearer 1|reGN6SFwxWCDzuXVsiSL9oPYV3nIha8yEoC7pcc057a60cda
+
+### フィールドデータ登録
+POST http://localhost:8000/api/fields/store
+Content-Type: application/json
+Authorization: Bearer 1|reGN6SFwxWCDzuXVsiSL9oPYV3nIha8yEoC7pcc057a60cda
+
+{
+    "name": "Player",
+    "character_type": "Warrior",
+    "round": 1,
+    "index": [
+        24,
+        25,
+        31
+    ],
+    "item_id": [
+        1,
+        5,
+        13
+    ],
+    "piece_id": [
+        1,
+        4,
+        1
+    ],
+    "piece_angle": [
+        {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+        },
+        {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -1.0,
+            "w": 4.371139E-08
+        },
+        {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.7071068,
+            "w": 0.7071068
+        }
+    ]
+}
