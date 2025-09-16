@@ -20,6 +20,11 @@ class Field extends Model
         )->withPivot('index');
         //return $this->hasMany(FieldObject::class);
     }
+    
+    public function rank()
+    {
+        return $this->hasOne(Rank::class, 'id', 'rank_id');
+    }
 
     public function users()
     {

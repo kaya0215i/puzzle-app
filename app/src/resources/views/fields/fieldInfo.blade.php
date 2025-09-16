@@ -17,6 +17,10 @@
                 <td>{{$field->users->name}}</td>
             </tr>
             <tr>
+                <th class="text-center fs-5">ランク</th>
+                <td>{{$field->rank->name}}</td>
+            </tr>
+            <tr>
                 <th class="text-center fs-5">ラウンド</th>
                 <td>{{$field->round}}</td>
             </tr>

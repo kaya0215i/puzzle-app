@@ -11,7 +11,6 @@ class UserController extends Controller
 {
     function index(Request $request)
     {
-        //$userData = User::All();
         $userData = User::paginate(10);
 
         return view('users/userList', ['users' => $userData]);
@@ -19,8 +18,7 @@ class UserController extends Controller
 
     function showUserInfo(request $request)
     {
-        $user = User::select('id', 'name', 'level', 'exp', 'created_at', 'updated_at')
-            ->where('id', '=', $request->id)
+        $user = User::where('id', '=', $request->id)
             ->first();
 
         return view('users/userInfo',

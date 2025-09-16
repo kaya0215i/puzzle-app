@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ItemsTableSeeder::class);
         $this->call(FieldTableSeeder::class);
         $this->call(FieldObjectTableSeeder::class);
+        $this->call(RanksTableSeeder::class);
     }
 }

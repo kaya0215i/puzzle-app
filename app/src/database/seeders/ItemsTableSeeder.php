@@ -118,8 +118,8 @@ class ItemsTableSeeder extends Seeder
             'amount' => 1,
             'energy_up' => 0,
             'energy_cost' => 0,
-            'cool_time' => 2,
-            'text' => '2秒ごとにアーマーを1獲得',
+            'cool_time' => 6,
+            'text' => '6秒ごとにアーマーを1獲得',
             'price' => 3,
         ]);
 
@@ -129,8 +129,8 @@ class ItemsTableSeeder extends Seeder
             'amount' => 3,
             'energy_up' => 0,
             'energy_cost' => 0,
-            'cool_time' => 2,
-            'text' => '2秒ごとにアーマーを3獲得',
+            'cool_time' => 8,
+            'text' => '8秒ごとにアーマーを3獲得',
             'price' => 5,
         ]);
 
@@ -140,30 +140,30 @@ class ItemsTableSeeder extends Seeder
             'amount' => 6,
             'energy_up' => 0,
             'energy_cost' => 0,
-            'cool_time' => 2,
-            'text' => '2秒ごとにアーマーを6獲得',
+            'cool_time' => 10,
+            'text' => '10秒ごとにアーマーを6獲得',
             'price' => 6,
         ]);
 
         Item::create([
             'name' => 'りんご',
             'is_weapon' => false,
-            'amount' => 3,
-            'energy_up' => 1.5,
+            'amount' => 5,
+            'energy_up' => 2,
             'energy_cost' => 0,
-            'cool_time' => 5,
-            'text' => '5秒ごとに体力を3回復、エネルギーを1.5獲得',
-            'price' => 4,
+            'cool_time' => 3,
+            'text' => '3秒ごとに体力を5回復、エネルギーを2獲得',
+            'price' => 3,
         ]);
 
         Item::create([
             'name' => '梨',
             'is_weapon' => false,
-            'amount' => 1.5,
-            'energy_up' => 3,
+            'amount' => 2.5,
+            'energy_up' => 6,
             'energy_cost' => 0,
-            'cool_time' => 0,
-            'text' => '5秒ごとに体力を1.5回復、エネルギーを3獲得',
+            'cool_time' => 4,
+            'text' => '3秒ごとに体力を2.5回復、エネルギーを4獲得',
             'price' => 4,
         ]);
 

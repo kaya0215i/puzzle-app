@@ -29,7 +29,7 @@ Route::post('/fields/store',
     ->middleware('auth:sanctum')
     ->name('fields.store');
 
-Route::get('/fields/{round}',
+Route::get('/fields/{rank_id}/{round}',
     [FieldController::class, 'getFieldInfo'])
     ->middleware('auth:sanctum')
     ->name('fields.showFieldInfo');

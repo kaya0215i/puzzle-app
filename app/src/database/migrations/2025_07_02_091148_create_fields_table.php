@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->integer('user_id');
             $table->string('character_type');
+            $table->integer('rank_id');
             $table->integer('round');
             $table->timestamps();
         });

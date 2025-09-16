@@ -15,8 +15,8 @@ class UsersTableSeeder extends Seeder
     {
         User::create([
             'name' => 'kaya',
-            'level' => 9999,
-            'exp' => 9999,
+            'rank_id' => 7,
+            'rank_point' => 100,
         ]);
 //        User::create([
 //            'name' => 'kei',

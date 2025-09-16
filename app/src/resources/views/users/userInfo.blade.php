@@ -13,12 +13,12 @@
                 <td>{{$user->name}}</td>
             </tr>
             <tr>
-                <th class="text-center fs-5">レベル</th>
-                <td>{{$user->level}}</td>
+                <th class="text-center fs-5">ランク</th>
+                <td>{{$user->rank->name}}</td>
             </tr>
             <tr>
-                <th class="text-center fs-5">経験値</th>
-                <td>{{$user->exp}}</td>
+                <th class="text-center fs-5">ランクポイント</th>
+                <td>{{$user->rank_point}}</td>
             </tr>
             <tr>
                 <th class="text-center fs-5">作成日</th>

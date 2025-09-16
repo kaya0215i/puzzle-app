@@ -8,6 +8,8 @@
                 <th class="text-center fs-5">id</th>
                 <th class="text-center fs-5">ユーザーid</th>
                 <th class="text-center fs-5">ユーザー名</th>
+                <th class="text-center fs-5">ランク</th>
+                <th class="text-center fs-5">ラウンド</th>
                 <th class="text-center fs-5">作成日</th>
 
             </tr>
@@ -18,6 +20,8 @@
                     </td>
                     <td>{{$field->user_id}}</td>
                     <td>{{$field->users->name}}</td>
+                    <td>{{$field->rank->name}}</td>
+                    <td>{{$field->round}}</td>
                     <td>{{$field->created_at}}</td>
                 </tr>
             @endforeach

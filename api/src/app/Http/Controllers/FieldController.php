@@ -14,6 +14,7 @@ class FieldController extends Controller
     {
         $validated = $request->validate([
             'character_type' => ['required'],
+            'rank_id' => ['required'],
             'round' => ['required'],
             'index' => ['required'],
             'item_id' => ['required'],
@@ -24,6 +25,7 @@ class FieldController extends Controller
         $field = Field::create([
             'user_id' => $request->user()->id,
             'character_type' => $validated['character_type'],
+            'rank_id' => $validated['rank_id'],
             'round' => $validated['round'],
         ]);
 
@@ -45,12 +47,13 @@ class FieldController extends Controller
 
     public function getFieldInfo(Request $request)
     {
-        $field = Field::whereNot('id', '=', $request->user()->id)
+        $field = Field::whereNot('user_id', '=', $request->user()->id)
+            ->where('rank_id', '=', $request->rank_id)
             ->where('round', '=', $request->round)
             ->get();
         $field = $field->random();
 
-        $user = User::findOrFail($request->user()->id);
+        $user = User::findOrFail($field->user_id);
 
         foreach ($field->field_objects as $field_objects) {
             $index[] = $field_objects->pivot->index;

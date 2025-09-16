@@ -18,4 +18,9 @@ class User extends Authenticatable
     protected $guarded = [
         'id',
     ];
+
+    public function rank()
+    {
+        return $this->hasOne(Rank::class, 'id', 'rank_id');
+    }
 }

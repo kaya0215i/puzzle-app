@@ -16,6 +16,7 @@ class FieldTableSeeder extends Seeder
         Field::create([
             'user_id' => 1,
             'character_type' => 'Tank',
+            'rank_id' => 1,
             'round' => 1
         ]);
     }

@@ -7,8 +7,8 @@
             <tr>
                 <th class="text-center fs-5" style="width: 5%">ID</th>
                 <th class="text-center fs-5" style="width: 40%">ユーザー名</th>
-                <th class="text-center fs-5">レベル</th>
-                <th class="text-center fs-5">経験値</th>
+                <th class="text-center fs-5">ランク</th>
+                <th class="text-center fs-5">ランクポイント</th>
             </tr>
             @foreach($users as $user)
                 <tr>
@@ -16,8 +16,8 @@
                     <td>
                         <a href="{{url('users/userInfo/')}}/{{$user['id']}}/userList/{{$users->currentPage()}}">{{$user['name']}}</a>
                     </td>
-                    <td>{{$user['level']}}</td>
-                    <td>{{$user['exp']}}</td>
+                    <td>{{$user->rank->name}}</td>
+                    <td>{{$user['rank_point']}}</td>
                 </tr>
             @endforeach
         </table>

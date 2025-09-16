@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
+use App\Models\Rank;
 use App\Models\UserDetail;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -34,8 +35,8 @@ class UserController extends Controller
 
         $user = User::create([
             'name' => $validated['name'],
-            'level' => 0,
-            'exp' => 0,
+            'rank_id' => 1,
+            'rank_point' => 0,
         ]);
 
         // APIトークンを発行する
@@ -48,10 +49,14 @@ class UserController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'min:4', 'max:20'],
+            'rank_id' => ['required'],
+            'rank_point' => ['required'],
         ]);
 
         $user = User::findOrFail($request->user()->id);
         $user->name = $validated['name'];
+        $user->rank_id = $validated['rank_id'];
+        $user->rank_point = $validated['rank_point'];
         $user->save();
 
         return response()->json();
