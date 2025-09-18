@@ -24,6 +24,10 @@ Authorization: Bearer 1|CRCv39eJ6EVUFFe497gMazWokxfru5DoI0hVdnYk3dba2615
     "rank_point": 99
 }
 
+
+
+
+
 ### フレンドリストを表示
 GET http://localhost:8000/api/friends/index
 Content-Type: application/json
@@ -43,6 +47,17 @@ Authorization: Bearer 1|BqgsXjDDdrQJofKLH7EhO3xoYAWHtnwd2yMdcBUO5d630748
 GET http://localhost:8000/api/friends/acceptFriendRequest/kkkttt
 Content-Type: application/json
 Authorization: Bearer 1|BqgsXjDDdrQJofKLH7EhO3xoYAWHtnwd2yMdcBUO5d630748
+
+
+
+
+
+### アイテムデータを取得
+GET http://localhost:8000/api/items/index
+
+
+
+
 
 ### フィールドデータ取得
 GET http://localhost:8000/api/fields/1/1

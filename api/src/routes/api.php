@@ -21,6 +21,10 @@ Route::post('/users/update',
     ->middleware('auth:sanctum')
     ->name('users.update');
 
+Route::get('/items/index',
+    [ItemController::class, 'index'])
+    ->name('items.index');
+
 Route::post('/fields/store',
     [FieldController::class, 'store'])
     ->middleware('auth:sanctum')
