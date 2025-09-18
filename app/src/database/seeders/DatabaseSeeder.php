@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FieldTableSeeder::class);
         $this->call(FieldObjectTableSeeder::class);
         $this->call(RanksTableSeeder::class);
+        $this->call(FriendsTableSeeder::class);
+        $this->call(FriendRequestsTableSeeder::class);
     }
 }

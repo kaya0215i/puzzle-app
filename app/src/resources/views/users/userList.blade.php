@@ -16,7 +16,7 @@
                     <td>
                         <a href="{{url('users/userInfo/')}}/{{$user['id']}}/userList/{{$users->currentPage()}}">{{$user['name']}}</a>
                     </td>
-                    <td>{{$user->rank->name}}</td>
+                    <td>{{$user->ranks->name}}</td>
                     <td>{{$user['rank_point']}}</td>
                 </tr>
             @endforeach

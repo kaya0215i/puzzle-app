@@ -20,7 +20,7 @@
                     </td>
                     <td>{{$field->user_id}}</td>
                     <td>{{$field->users->name}}</td>
-                    <td>{{$field->rank->name}}</td>
+                    <td>{{$field->ranks->name}}</td>
                     <td>{{$field->round}}</td>
                     <td>{{$field->created_at}}</td>
                 </tr>

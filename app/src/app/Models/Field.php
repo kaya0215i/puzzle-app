@@ -20,8 +20,8 @@ class Field extends Model
         )->withPivot('index');
         //return $this->hasMany(FieldObject::class);
     }
-    
-    public function rank()
+
+    public function ranks()
     {
         return $this->hasOne(Rank::class, 'id', 'rank_id');
     }

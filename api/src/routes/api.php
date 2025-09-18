@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FieldController;
+use App\Http\Controllers\FriendController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -20,10 +21,6 @@ Route::post('/users/update',
     ->middleware('auth:sanctum')
     ->name('users.update');
 
-Route::get('/users/{user_id}',
-    [UserController::class, 'show'])
-    ->name('users.show');
-
 Route::post('/fields/store',
     [FieldController::class, 'store'])
     ->middleware('auth:sanctum')
@@ -33,3 +30,23 @@ Route::get('/fields/{rank_id}/{round}',
     [FieldController::class, 'getFieldInfo'])
     ->middleware('auth:sanctum')
     ->name('fields.showFieldInfo');
+
+Route::get('/friends/index',
+    [FriendController::class, 'index'])
+    ->middleware('auth:sanctum')
+    ->name('friends.index');
+
+Route::get('/friends/sendFriendRequest/{user_name}',
+    [FriendController::class, 'sendFriendRequest'])
+    ->middleware('auth:sanctum')
+    ->name('friends.sendFriendRequest');
+
+Route::get('/friends/getArrivedFriendRequests',
+    [FriendController::class, 'getArrivedFriendRequests'])
+    ->middleware('auth:sanctum')
+    ->name('friends.getArrivedFriendRequests');
+
+Route::get('/friends/acceptFriendRequest/{requester_user_name}',
+    [FriendController::class, 'acceptFriendRequest'])
+    ->middleware('auth:sanctum')
+    ->name('friends.acceptFriendRequest');

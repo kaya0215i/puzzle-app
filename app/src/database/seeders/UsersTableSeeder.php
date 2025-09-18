@@ -18,6 +18,16 @@ class UsersTableSeeder extends Seeder
             'rank_id' => 7,
             'rank_point' => 100,
         ]);
+        User::create([
+            'name' => 'kkkk',
+            'rank_id' => 1,
+            'rank_point' => 0,
+        ]);
+        User::create([
+            'name' => 'tatata',
+            'rank_id' => 3,
+            'rank_point' => 40,
+        ]);
 //        User::create([
 //            'name' => 'kei',
 //            'level' => 19,

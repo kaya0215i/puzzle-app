@@ -14,7 +14,7 @@
             </tr>
             <tr>
                 <th class="text-center fs-5">ランク</th>
-                <td>{{$user->rank->name}}</td>
+                <td>{{$user->ranks->name}}</td>
             </tr>
             <tr>
                 <th class="text-center fs-5">ランクポイント</th>
@@ -28,6 +28,51 @@
                 <th class="text-center fs-5">最終更新日</th>
                 <td>{{$user->updated_at}}</td>
             </tr>
+        </table>
+        <table class="table table-striped table-bordered border-dark" style="width: 70%">
+            <tr>
+                <th class="text-center fs-5">フレンド</th>
+            </tr>
+            @if($user->friends()->isEmpty())
+                <tr>
+                    <td class="text-center">無し</td>
+                </tr>
+            @endif
+            @foreach($user->friends() as $friend)
+                <tr>
+                    <td class="text-center">{{$friend->name}}</td>
+                </tr>
+            @endforeach
+        </table>
+        <table class="table table-striped table-bordered border-dark" style="width: 70%">
+            <tr>
+                <th class="text-center fs-5">フレンド依頼</th>
+            </tr>
+            @if($user->arrived_friend_requests()->isEmpty())
+                <tr>
+                    <td class="text-center">無し</td>
+                </tr>
+            @endif
+            @foreach($user->arrived_friend_requests() as $request)
+                <tr>
+                    <td class="text-center">{{$request->name}}</td>
+                </tr>
+            @endforeach
+        </table>
+        <table class="table table-striped table-bordered border-dark" style="width: 70%">
+            <tr>
+                <th class="text-center fs-5">フレンド申請中</th>
+            </tr>
+            @if($user->applied_friend_requests()->isEmpty())
+                <tr>
+                    <td class="text-center">無し</td>
+                </tr>
+            @endif
+            @foreach($user->applied_friend_requests() as $requested)
+                <tr>
+                    <td class="text-center">{{$requested->name}}</td>
+                </tr>
+            @endforeach
         </table>
     </div>
     <br>

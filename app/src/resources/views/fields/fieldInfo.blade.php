@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <th class="text-center fs-5">ランク</th>
-                <td>{{$field->rank->name}}</td>
+                <td>{{$field->ranks->name}}</td>
             </tr>
             <tr>
                 <th class="text-center fs-5">ラウンド</th>
@@ -34,10 +34,10 @@
                 <th class="text-center fs-5" style="width: 25%">座標</th>
                 <th class="text-center fs-5">オブジェクトの種類</th>
             </tr>
-            @foreach($field->field_objects as $field_objects)
+            @foreach($field->field_objects as $field_object)
                 <tr>
-                    <td>{{$field_objects->pivot->index}}</td>
-                    <td>{{$field_objects->name}}</td>
+                    <td>{{$field_object->pivot->index}}</td>
+                    <td>{{$field_object->name}}</td>
                 </tr>
             @endforeach
         </table>
