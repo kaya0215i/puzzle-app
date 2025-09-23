@@ -79,8 +79,8 @@
     <div class="d-flex align-items-center flex-column">
         @if($from === 'userList')
             <a href="{{url('users/index?page=')}}{{$page}}" class="btn btn-primary">戻る</a>
-        @elseif($from === 'userItemList')
-            <a href="{{url('userItems/index?page=')}}{{$page}}" class="btn btn-primary">戻る</a>
+        @elseif($from === 'fields')
+            <a href="{{url('fields/index?page=')}}{{$page}}" class="btn btn-primary">戻る</a>
         @endif
     </div>
 @endsection

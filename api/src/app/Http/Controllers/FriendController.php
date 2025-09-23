@@ -13,7 +13,7 @@ class FriendController extends Controller
     {
         $user = User::findOrFail($request->user()->id);
 
-        if (!$user->friends()) {
+        if ($user->friends()->isEmpty()) {
             return response()->json();
         }
 

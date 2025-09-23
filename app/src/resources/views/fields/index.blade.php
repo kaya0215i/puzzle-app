@@ -19,7 +19,9 @@
                         <a href="{{url('fields/fieldInfo/')}}/{{$field->id}}/{{$fields->currentPage()}}">{{$field->id}}</a>
                     </td>
                     <td>{{$field->user_id}}</td>
-                    <td>{{$field->users->name}}</td>
+                    <td>
+                        <a href="{{url('users/userInfo/')}}/{{$field->user_id}}/fields/{{$fields->currentPage()}}">{{$field->users->name}}</a>
+                    </td>
                     <td>{{$field->ranks->name}}</td>
                     <td>{{$field->round}}</td>
                     <td>{{$field->created_at}}</td>
