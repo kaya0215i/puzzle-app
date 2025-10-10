@@ -12,6 +12,18 @@ Accept: application/json
     "name": "bbbb"
 }
 
+###
+GET ge202409.japaneast.cloudapp.azure.com/api/items/index
+
+###
+POST ge202409.japaneast.cloudapp.azure.com/api/users/store
+Content-Type: application/json
+
+{
+    "name": "kaya0215"
+}
+
+
 ### ユーザー更新
 POST http://localhost:8000/api/users/update
 Content-Type: application/json
