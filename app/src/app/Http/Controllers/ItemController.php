@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use function PHPUnit\Framework\isEmpty;
 
 class ItemController extends Controller
 {
@@ -96,14 +97,19 @@ class ItemController extends Controller
     function updateItem(Request $request)
     {
         $validated = $request->validate([
-            'name' => ['required', 'min:3', 'max:20'],
+            'name' => ['required', 'min:1', 'max:20'],
             'amount' => ['required'],
             'energy_up' => ['required'],
             'energy_cost' => ['required'],
             'cool_time' => ['required'],
-            'text' => ['required', 'min:3', 'max:150'],
+            'text' => ['max:150'],
             'price' => ['required'],
         ]);
+
+        $text = '';
+        if (!isEmpty($validated['text'])) {
+            $text = $validated['text'];
+        }
 
         $isWeapon = '';
         if ($request->is_weapon === 'weapon') {
@@ -124,7 +130,7 @@ class ItemController extends Controller
         $item->energy_up = $validated['energy_up'];
         $item->energy_cost = $validated['energy_cost'];
         $item->cool_time = $validated['cool_time'];
-        $item->text = $validated['text'];
+        $item->text = $text;
         $item->price = $validated['price'];
         $item->save();
 
